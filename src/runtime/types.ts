@@ -175,13 +175,19 @@ type ProviderCookie = {
    */
   type: Extract<SupportedAuthProviders, 'cookie'>
   /**
-   * Endpoints to use for the different methods. `nuxt-auth` will use this and the root-level `baseURL` to create the final request. E.g.:
-   * - `baseURL=/api/auth`, `path=/login` will result in a request to `/api/auth/login`
-   * - `baseURL=http://localhost:5000/_authenticate`, `path=/sign-in` will result in a request to `http://localhost:5000/_authenticate/sign-in`
+   * Cookie name for cookie based authentication
+   *
+   * @default ""
+   * @example "ApplicationCookie"
    */
   cookie: {
     name: string
   },
+  /**
+   * Endpoints to use for the different methods. `nuxt-auth` will use this and the root-level `baseURL` to create the final request. E.g.:
+   * - `baseURL=/api/auth`, `path=/login` will result in a request to `/api/auth/login`
+   * - `baseURL=http://localhost:5000/_authenticate`, `path=/sign-in` will result in a request to `http://localhost:5000/_authenticate/sign-in`
+   */
   endpoints?: {
     /**
      * What method and path to call to perform the sign-in. This endpoint must return a token that can be used to authenticate subsequent requests.
@@ -210,7 +216,6 @@ type ProviderCookie = {
      * @example { path: '/user', method: 'get' }
      */
     getSession?: { path?: string, method?: RouterMethod },
-    csrf?: { path?: string, method?: RouterMethod },
   },
   /**
    * Pages that `nuxt-auth` needs to know the location off for redirects.
