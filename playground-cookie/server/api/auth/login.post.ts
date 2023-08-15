@@ -6,7 +6,7 @@ export const SECRET = 'dummy'
 export default eventHandler(async (event) => {
   const result = z.object({ username: z.string().min(1), password: z.literal('1') }).safeParse(await readBody(event))
   if (!result.success) {
-    throw createError({ statusCode: 403, statusMessage: 'Unauthorized, hint: try `hunter2` as password' })
+    throw createError({ statusCode: 403, statusMessage: 'Unauthorized, hint: try `1` as password' })
   }
 
   const expiresIn = 1500
